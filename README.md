@@ -6,7 +6,9 @@ WIP addon mod for Mana and Artifice (by Mithion)
 
 Currently implemented: Fireworks Ritual, Disenchanting Ritual
 
-Planned: Temp Beacon Ritual, Mob Repelling Ritual, Genocide Ritual?
+WIP: Empowerment Ritual
+
+Planned: Mob Repelling Ritual, Genocide Ritual?
 
 
 
