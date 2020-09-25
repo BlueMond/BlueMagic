@@ -1,0 +1,71 @@
+{
+	"type": "mana-and-artifice:ritual",
+	"tier": 3,
+	"pattern":
+	[
+		[ 3, 0, 8, 0, 5 ],
+		[ 4, 0, 0, 0, 6 ],
+		[-1,-1,-1,-1,-1 ],
+		[-1, 0, 0, 0,-1 ],
+		[ 2, 0, 1, 0, 7 ]
+	],
+	"displayPattern":
+	[
+		[-1, 0, 3, 0,-1 ],
+		[-1, 0, 0, 0,-1 ],
+		[ 5, 6, 7, 8, 9 ],
+		[-1, 0, 0, 0,-1 ],
+		[-1, 0, 1, 0,-1 ]
+	],
+	"reagents":
+	[
+		"D O E",
+		"D   E",
+		"     ",
+		"     ",
+		"L B L"
+	],
+	"keys":
+	{
+		"O":
+		{
+			"item": "bluemagic:enchantable_items",
+			"optional": false,
+			"consume": true
+		},
+		"L":
+		{ 
+			"item": "minecraft:lapis_block",
+			"optional": false,
+			"consume": true
+		},
+		"D":
+		{
+			"item": "minecraft:diamond",
+			"optional": false,
+			"consume": true
+		},
+		"E":
+		{
+			"item": "minecraft:emerald",
+			"optional": false,
+			"consume": true
+		},
+		"B":
+		{
+			"item": "minecraft:book",
+			"optional": false,
+			"consume": true
+		}
+	},
+	"manaweave":
+	[
+		"mana-and-artifice:manaweave_patterns/split_triangle"
+	],
+	"parameters":
+	{
+		"beamColor": "0x036bfc",
+		"displayIndexes": false,
+		"connectBeam": true
+	}
+}

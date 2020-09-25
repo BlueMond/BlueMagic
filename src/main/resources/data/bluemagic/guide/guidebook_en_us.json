@@ -1,0 +1,62 @@
+{
+	"Firework": {
+		"index": 0,
+		"category": "rituals",
+		"sections": [
+			{
+				"type": "title",
+				"value": "Ritual of Fireworks"
+			},
+			{
+				"type": "text",
+				"value": "A ritual that creates a display of fireworks!\n\nOf each firework rocket reagent, 5 fireworks of that type will be set off, in 1 second intervals, for a total of 20 fireworks!"
+			}
+		],
+		"related_recipes": [
+			{
+				"type": "ritual",
+				"location": "bluemagic:rituals/firework"
+			}
+		]
+	},
+	"Disenchanting": {
+		"index": 0,
+		"category": "rituals",
+		"sections": [
+			{
+				"type": "title",
+				"value": "Ritual of Disenchanting"
+			},
+			{
+				"type": "text",
+				"value": "A ritual for removing and catching the enchantments of an item!\n\nThe ritual requires an unenchanted book (an enchanted book may be used, but its prior enchantments will be wiped) and a piece of enchanted equipement. The equipment will be destroyed, and its enchantments will be reallocated to the book."
+			}
+		],
+		"related_recipes": [
+			{
+				"type": "ritual",
+				"location": "bluemagic:rituals/disenchanting"
+			}
+		]
+	},
+	"Empowerment": {
+		"index": 0,
+		"category": "rituals",
+		"sections": [
+			{
+				"type": "title",
+				"value": "Ritual of Empowerment"
+			},
+			{
+				"type": "text",
+				"value": "A ritual that creates a temporary radius of potion effect!\n\nINCOMPLETE"
+			}
+		],
+		"related_recipes": [
+			{
+				"type": "ritual",
+				"location": "bluemagic:rituals/firework"
+			}
+		]
+	}
+}

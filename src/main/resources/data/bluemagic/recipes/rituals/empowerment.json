@@ -1,0 +1,47 @@
+{
+	"type": "mana-and-artifice:ritual",
+	"tier": 2,
+	"pattern":
+	[
+		[ 0, 2, 0 ],
+		[-1, 1,-1 ],
+		[ 0,-1, 0 ]
+	],
+	"displayPattern":
+	[
+		[ 0, 1, 0 ],
+		[ 4,-1, 2 ],
+		[ 0, 3, 0 ]
+	],
+	"reagents":
+	[
+		" P ",
+		" D ",
+		"   "
+	],
+	"keys":
+	{
+		"D":
+		{
+			"item": "minecraft:diamond",
+			"optional": false,
+			"consume": true
+		},
+		"P":
+		{
+			"item": "minecraft:potion",
+			"optional": false,
+			"consume": true
+		}
+	},
+	"manaweave":
+	[
+		"mana-and-artifice:manaweave_patterns/circle"
+	],
+	"parameters":
+	{
+		"beamColor": "0x036bfc",
+		"displayIndexes": false,
+		"connectBeam": true
+	}
+}

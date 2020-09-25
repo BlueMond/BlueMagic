@@ -1,0 +1,59 @@
+{
+	"type": "mana-and-artifice:ritual",
+	"tier": 2,
+	"pattern":
+	[
+		[ 0, 0, 1, 0, 0 ],
+		[ 0, 5, 0, 6, 0 ],
+		[ 4, 0, 5, 0, 2 ],
+		[ 0, 8, 0, 7, 0 ],
+		[ 0, 0, 3, 0, 0 ]
+	],
+	"displayPattern":
+	[
+		[ 0, 0, 1, 0, 0 ],
+		[ 0,-1, 0,-1, 0 ],
+		[ 4, 0, 6, 0, 2 ],
+		[ 0,-1, 0,-1, 0 ],
+		[ 0, 0, 3, 0, 0 ]
+	],
+	"reagents":
+	[
+		"  F  ",
+		" B B ",
+		"F R F",
+		" B B ",
+		"  F  "
+	],
+	"keys":
+	{
+		"F":
+		{ 
+			"item": "minecraft:firework_rocket",
+			"optional": false,
+			"consume": false
+		},
+		"R":
+		{
+			"item": "minecraft:repeater",
+			"optional": false,
+			"consume": true
+		},
+		"B":
+		{
+			"item": "minecraft:redstone_block",
+			"optional": false,
+			"consume": true
+		}
+	},
+	"manaweave":
+	[
+		"mana-and-artifice:manaweave_patterns/triangle"
+	],
+	"parameters":
+	{
+		"beamColor": "0x29f0e2",
+		"displayIndexes": true,
+		"connectBeam": true
+	}
+}
