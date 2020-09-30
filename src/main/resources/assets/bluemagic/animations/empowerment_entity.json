@@ -1,0 +1,60 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"bluemagic.empowermententity.idle": {
+			"animation_length": 1.2,
+			"bones": {
+				"Torso": {
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.6": {
+							"vector": [0, 1, 0]
+						},
+						"1.2": {
+							"vector": [0, 0, 0]
+						}
+					},
+					"scale": {
+						"0.0": {
+							"vector": [1, 1, 1]
+						},
+						"0.6": {
+							"vector": [0.8, 0.8, 0.8]
+						},
+						"1.2": {
+							"vector": [1, 1, 1]
+						}
+					}
+				},
+				"Leg1": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.6": {
+							"vector": [180, 0, 0]
+						},
+						"1.2": {
+							"vector": [360, 0, 0]
+						}
+					}
+				},
+				"Leg2": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.6": {
+							"vector": [0, 0, 180]
+						},
+						"1.2": {
+							"vector": [0, 0, 360]
+						}
+					}
+				}
+			}
+		}
+	}
+}

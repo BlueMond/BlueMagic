@@ -1,74 +1,67 @@
 package me.bluemond.bluemagic.client.entity.model;
 
-import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.vertex.IVertexBuilder;
 import me.bluemond.bluemagic.entities.EmpowermentEntity;
-import net.minecraft.client.renderer.entity.model.EntityModel;
-import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.entity.Entity;
+import net.minecraft.util.ResourceLocation;
+import software.bernie.geckolib.animation.model.AnimatedEntityModel;
+import software.bernie.geckolib.animation.render.AnimatedModelRenderer;
 
-public class EmpowermentEntityModel<T extends EmpowermentEntity> extends EntityModel<T> {
-    private final ModelRenderer Body;
-    private final ModelRenderer Torso;
-    private final ModelRenderer Legs;
-    private final ModelRenderer Leg1;
-    private final ModelRenderer Leg2;
-    private final ModelRenderer Leg3;
-    private final ModelRenderer Leg4;
+public class EmpowermentEntityModel extends AnimatedEntityModel<EmpowermentEntity> {
 
-    public EmpowermentEntityModel() {
+    private final AnimatedModelRenderer Body;
+    private final AnimatedModelRenderer Torso;
+    private final AnimatedModelRenderer Legs;
+    private final AnimatedModelRenderer Leg1;
+    private final AnimatedModelRenderer Leg2;
+
+    public EmpowermentEntityModel()
+    {
         textureWidth = 32;
         textureHeight = 32;
-
-        Body = new ModelRenderer(this);
+        Body = new AnimatedModelRenderer(this);
         Body.setRotationPoint(0.0F, 24.0F, 0.0F);
 
+        Body.setModelRendererName("Body");
+        this.registerModelRenderer(Body);
 
-        Torso = new ModelRenderer(this);
+        Torso = new AnimatedModelRenderer(this);
         Torso.setRotationPoint(0.0F, 0.0F, 0.0F);
         Body.addChild(Torso);
-        Torso.setTextureOffset(0, 0).addBox(-3.0F, -11.0F, -3.0F, 6.0F, 6.0F, 6.0F, 0.0F, false);
+        Torso.setTextureOffset(0, 0).addBox(-4.0F, -12.0F, -4.0F, 8.0F, 8.0F, 8.0F, 0.0F, false);
+        Torso.setModelRendererName("Torso");
+        this.registerModelRenderer(Torso);
 
-        Legs = new ModelRenderer(this);
+        Legs = new AnimatedModelRenderer(this);
         Legs.setRotationPoint(0.0F, 0.0F, 0.0F);
         Body.addChild(Legs);
 
+        Legs.setModelRendererName("Legs");
+        this.registerModelRenderer(Legs);
 
-        Leg1 = new ModelRenderer(this);
-        Leg1.setRotationPoint(0.0F, 0.0F, 0.0F);
+        Leg1 = new AnimatedModelRenderer(this);
+        Leg1.setRotationPoint(0.0F, -7.0F, 0.0F);
         Legs.addChild(Leg1);
+        Leg1.setTextureOffset(0, 18).addBox(-4.0F, 8.0F, -1.0F, 8.0F, 1.0F, 2.0F, 0.0F, false);
+        Leg1.setTextureOffset(0, 18).addBox(2.0F, 7.0F, -1.0F, 4.0F, 1.0F, 2.0F, 0.0F, false);
+        Leg1.setTextureOffset(0, 18).addBox(-6.0F, 7.0F, -1.0F, 4.0F, 1.0F, 2.0F, 0.0F, false);
+        Leg1.setModelRendererName("Leg1");
+        this.registerModelRenderer(Leg1);
 
-
-        Leg2 = new ModelRenderer(this);
-        Leg2.setRotationPoint(0.0F, 0.0F, 0.0F);
+        Leg2 = new AnimatedModelRenderer(this);
+        Leg2.setRotationPoint(1.0F, -8.0F, 0.0F);
         Legs.addChild(Leg2);
+        Leg2.setTextureOffset(14, 16).addBox(8.0F, -1.0F, -4.0F, 1.0F, 2.0F, 8.0F, 0.0F, true);
+        Leg2.setTextureOffset(14, 16).addBox(7.0F, -1.0F, -6.0F, 1.0F, 2.0F, 4.0F, 0.0F, true);
+        Leg2.setTextureOffset(14, 16).addBox(7.0F, -1.0F, 2.0F, 1.0F, 2.0F, 4.0F, 0.0F, true);
+        Leg2.setModelRendererName("Leg2");
+        this.registerModelRenderer(Leg2);
 
-
-        Leg3 = new ModelRenderer(this);
-        Leg3.setRotationPoint(0.0F, 0.0F, 0.0F);
-        Legs.addChild(Leg3);
-
-
-        Leg4 = new ModelRenderer(this);
-        Leg4.setRotationPoint(0.0F, 0.0F, 0.0F);
-        Legs.addChild(Leg4);
-
-    }
-
-    @Override
-    public void setRotationAngles(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-
+        this.rootBones.add(Body);
     }
 
 
     @Override
-    public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
-        Body.render(matrixStack, buffer, packedLight, packedOverlay);
-    }
-
-    public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-        modelRenderer.rotateAngleX = x;
-        modelRenderer.rotateAngleY = y;
-        modelRenderer.rotateAngleZ = z;
+    public ResourceLocation getAnimationFileLocation()
+    {
+        return new ResourceLocation("bluemagic", "animations/empowerment_entity.json");
     }
 }

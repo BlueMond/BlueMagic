@@ -25,7 +25,7 @@ public class RitualEffectDisenchanting extends RitualEffect {
     @Override
     protected boolean applyRitualEffect(PlayerEntity playerEntity, ServerWorld serverWorld, BlockPos ritualCenter, IRitualRecipe iRitualRecipe, NonNullList<ItemStack> reagents) {
         ItemStack enItemStack = reagents.get(7);
-        ItemStack bookItemStack = new ItemStack(Items.BOOK);
+        ItemStack bookItemStack = new ItemStack(Items.ENCHANTED_BOOK);
 
         Map<Enchantment, Integer> enchantments = EnchantmentHelper.getEnchantments(enItemStack);
         for(Map.Entry<Enchantment, Integer> enEntry : enchantments.entrySet()){

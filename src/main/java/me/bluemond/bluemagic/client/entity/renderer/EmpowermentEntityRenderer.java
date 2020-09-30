@@ -4,13 +4,12 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import me.bluemond.bluemagic.BlueMagic;
 import me.bluemond.bluemagic.client.entity.model.EmpowermentEntityModel;
+import me.bluemond.bluemagic.unused.OLDEmpowermentEntityModel;
 import me.bluemond.bluemagic.entities.EmpowermentEntity;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
-import net.minecraft.client.renderer.entity.BoatRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.entity.item.BoatEntity;
 import net.minecraft.util.ResourceLocation;
 
 public class EmpowermentEntityRenderer extends EntityRenderer<EmpowermentEntity> {
@@ -23,7 +22,7 @@ public class EmpowermentEntityRenderer extends EntityRenderer<EmpowermentEntity>
 
         // this is what works
         super(renderManager);
-        this.shadowSize = 0.6f;
+        this.shadowSize = 0.5f;
 
     }
 

@@ -91,6 +91,7 @@ repositories {
         dirs 'libs'
     }
     maven { url 'https://maven.theillusivec4.top/' }
+    maven { url 'https://repo.repsy.io/mvn/gandiber/geckolib' }
 }
 
 dependencies {
@@ -118,6 +119,8 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
     compileOnly 'blank:mana-and-artifice-1.0.7.1:api' //api, compilation only
     runtimeOnly fg.deobf('blank:mana-and-artifice:1.0.7.2') //mod itself, deobf for runtime
+
+    implementation fg.deobf('software.bernie.geckolib:forge-1.16.3-geckolib:2.1.1')
     
     runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.16.2-4.0.0.1")
     compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.16.2-4.0.0.1:api")    

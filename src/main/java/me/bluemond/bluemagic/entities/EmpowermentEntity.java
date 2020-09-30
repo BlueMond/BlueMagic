@@ -8,17 +8,24 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.PotionUtils;
-import net.minecraft.tileentity.BeaconTileEntity;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
+import software.bernie.geckolib.animation.builder.AnimationBuilder;
+import software.bernie.geckolib.animation.controller.AnimationController;
+import software.bernie.geckolib.animation.controller.EntityAnimationController;
+import software.bernie.geckolib.entity.IAnimatedEntity;
+import software.bernie.geckolib.event.AnimationTestEvent;
+import software.bernie.geckolib.manager.EntityAnimationManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmpowermentEntity extends Entity {
+public class EmpowermentEntity extends Entity implements IAnimatedEntity {
 
+    private EntityAnimationManager animationManager = new EntityAnimationManager();
+    private AnimationController animationController = new EntityAnimationController(this, "idleController", 20F, this::animationPredicate);
     public static final String KEY_AGE = "age";
 
     private ItemStack potionStack;
@@ -29,6 +36,7 @@ public class EmpowermentEntity extends Entity {
 
     public EmpowermentEntity(EntityType<? extends EmpowermentEntity> entityTypeIn, World worldIn) {
         super(entityTypeIn, worldIn);
+        animationManager.addAnimationController(animationController);
         potionStack = null;
         effects = new ArrayList<>();
         age = 0;
@@ -49,10 +57,28 @@ public class EmpowermentEntity extends Entity {
             List<PlayerEntity> playerEntities = this.world.getEntitiesWithinAABB(
                     PlayerEntity.class, new AxisAlignedBB(pos.getX()-RADIUS, 0, pos.getZ()-RADIUS, pos.getX()+RADIUS, 256, pos.getZ()+RADIUS));
 
+            // loop through players and applicable effects
             for(PlayerEntity playerEntity : playerEntities){
                 for(EffectInstance effectInstance : effects){
                     if(!effectInstance.getPotion().isInstant()){
-                        playerEntity.addPotionEffect(new EffectInstance(effectInstance.getPotion(), 5*20+3, effectInstance.getAmplifier()));
+
+                        EffectInstance currentEffect = playerEntity.getActivePotionEffect(effectInstance.getPotion());
+                        boolean shouldApply = false;
+
+                        // apply potion effect if current application is expiring or not already applied
+                        if(currentEffect != null){
+                            if(currentEffect.getDuration() <= 1*20){
+                                shouldApply = true;
+                            }
+                        }else{
+                            shouldApply = true;
+                        }
+
+                        if(shouldApply){
+                            playerEntity.addPotionEffect(new EffectInstance
+                                    (effectInstance.getPotion(), 5*20, effectInstance.getAmplifier()));
+                        }
+
                     }
                 }
 
@@ -125,4 +151,18 @@ public class EmpowermentEntity extends Entity {
         return false;
     }
 
+
+
+    @Override
+    public EntityAnimationManager getAnimationManager() {
+        return animationManager;
+    }
+
+
+    private <E extends EmpowermentEntity> boolean animationPredicate(AnimationTestEvent<E> event){
+
+        animationController.setAnimation(new AnimationBuilder().addAnimation("bluemagic.empowermententity.idle", true));
+
+        return true;
+    }
 }
