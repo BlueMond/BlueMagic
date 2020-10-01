@@ -1,6 +1,7 @@
 package me.bluemond.bluemagic.client.entity.model;
 
 import me.bluemond.bluemagic.entities.EmpowermentEntity;
+import net.minecraft.client.renderer.entity.model.BoatModel;
 import net.minecraft.util.ResourceLocation;
 import software.bernie.geckolib.animation.model.AnimatedEntityModel;
 import software.bernie.geckolib.animation.render.AnimatedModelRenderer;
@@ -57,7 +58,6 @@ public class EmpowermentEntityModel extends AnimatedEntityModel<EmpowermentEntit
 
         this.rootBones.add(Body);
     }
-
 
     @Override
     public ResourceLocation getAnimationFileLocation()

@@ -6,6 +6,9 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.PotionUtils;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -26,9 +29,10 @@ public class EmpowermentEntity extends Entity implements IAnimatedEntity {
 
     private EntityAnimationManager animationManager = new EntityAnimationManager();
     private AnimationController animationController = new EntityAnimationController(this, "idleController", 20F, this::animationPredicate);
-    public static final String KEY_AGE = "age";
 
-    private ItemStack potionStack;
+    private static final String KEY_AGE = "age";
+    private static final DataParameter<ItemStack> KEY_POTION = EntityDataManager.createKey(EmpowermentEntity.class, DataSerializers.ITEMSTACK);
+
     private List<EffectInstance> effects;
     private int age;
     private static final int MAX_AGE = 1 *60*20; // first value is minutes
@@ -37,7 +41,6 @@ public class EmpowermentEntity extends Entity implements IAnimatedEntity {
     public EmpowermentEntity(EntityType<? extends EmpowermentEntity> entityTypeIn, World worldIn) {
         super(entityTypeIn, worldIn);
         animationManager.addAnimationController(animationController);
-        potionStack = null;
         effects = new ArrayList<>();
         age = 0;
     }
@@ -88,22 +91,20 @@ public class EmpowermentEntity extends Entity implements IAnimatedEntity {
 
     @Override
     protected void registerData() {
-
+        this.dataManager.register(KEY_POTION, null);
     }
 
     @Override
     protected void readAdditional(CompoundNBT compound) {
-        potionStack = ItemStack.read(compound);
+        this.dataManager.set(KEY_POTION, ItemStack.read(compound));
         age = compound.getInt(KEY_AGE);
-        effects = PotionUtils.getEffectsFromStack(potionStack);
+        effects = PotionUtils.getEffectsFromStack(this.dataManager.get(KEY_POTION));
     }
 
     @Override
     protected void writeAdditional(CompoundNBT compound) {
-        if(potionStack != null){
-            potionStack.write(compound);
-            compound.putInt(KEY_AGE, age);
-        }
+        this.dataManager.get(KEY_POTION).write(compound);
+        compound.putInt(KEY_AGE, age);
     }
 
     @Override
@@ -120,12 +121,12 @@ public class EmpowermentEntity extends Entity implements IAnimatedEntity {
     }
 
     public ItemStack getPotionStack() {
-        return potionStack;
+        return this.dataManager.get(KEY_POTION);
     }
 
     // also sets effects from potionStack
     public void setPotionStack(ItemStack potionStack) {
-        this.potionStack = potionStack;
+        this.dataManager.set(KEY_POTION, potionStack);
         effects = PotionUtils.getEffectsFromStack(potionStack);
     }
 
