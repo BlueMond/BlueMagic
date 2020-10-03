@@ -16,7 +16,6 @@ import net.minecraft.client.renderer.model.IBakedModel;
 import net.minecraft.client.renderer.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.util.ResourceLocation;
-import software.bernie.geckolib.animation.render.AnimatedModelRenderer;
 import software.bernie.geckolib.render.IModelRenderer;
 
 public class EmpowermentEntityRenderer extends EntityRenderer<EmpowermentEntity> implements IModelRenderer
@@ -29,7 +28,7 @@ public class EmpowermentEntityRenderer extends EntityRenderer<EmpowermentEntity>
     public EmpowermentEntityRenderer(EntityRendererManager renderManager) {
 
         super(renderManager);
-        this.shadowSize = 0.5f;
+        this.shadowSize = 0.4f;
 
     }
 
@@ -41,9 +40,8 @@ public class EmpowermentEntityRenderer extends EntityRenderer<EmpowermentEntity>
 
         if(entityIn.getPotionStack() != null){
             matrixStackIn.push();
-            matrixStackIn.translate(.020, 1.050, 0);
-            AnimatedModelRenderer modelRenderer = this.empowermentModel.getBone("Torso");
-            matrixStackIn.scale(.5F * modelRenderer.scaleValueX, .5F * modelRenderer.scaleValueY, .5F * modelRenderer.scaleValueZ);
+            matrixStackIn.translate(.015, 1.01, 0);
+            matrixStackIn.scale(.5F, .5F, .5F);
             // ForgeHooksClient.drawItemLayered(Minecraft.getInstance().getItemRenderer(), this.empowermentModel, entityIn.getPotionStack(), matrixStackIn, bufferIn, packedLightIn, OverlayTexture.NO_OVERLAY, true);
             // ItemStackTileEntityRenderer.instance.func_239207_a_(entityIn.getPotionStack(), ItemCameraTransforms.TransformType.FIXED, matrixStackIn, bufferIn, packedLightIn, OverlayTexture.NO_OVERLAY);
 

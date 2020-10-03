@@ -5,26 +5,15 @@
 			"animation_length": 1.2,
 			"bones": {
 				"Torso": {
-					"position": {
+					"rotation": {
 						"0.0": {
 							"vector": [0, 0, 0]
 						},
 						"0.6": {
-							"vector": [0, 1, 0]
+							"vector": [0, 180, 0]
 						},
 						"1.2": {
-							"vector": [0, 0, 0]
-						}
-					},
-					"scale": {
-						"0.0": {
-							"vector": [1, 1, 1]
-						},
-						"0.6": {
-							"vector": [0.8, 0.8, 0.8]
-						},
-						"1.2": {
-							"vector": [1, 1, 1]
+							"vector": [0, 360, 0]
 						}
 					}
 				},
