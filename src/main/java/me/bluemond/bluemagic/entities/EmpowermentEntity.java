@@ -50,9 +50,11 @@ public class EmpowermentEntity extends Entity implements IAnimatedEntity {
 
         // verify age
         age++;
+        /*
         if(age >= MAX_AGE){
             this.remove();
         }
+         */
 
         // add potion effect to those within radius
         if(!this.world.isRemote() && !effects.isEmpty()){
