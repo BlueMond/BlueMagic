@@ -3,11 +3,11 @@
 	"tier": 3,
 	"pattern":
 	[
-		[-1,-1,-1,-1,-1 ],
-		[ 9, 0, 2, 0, 8 ],
+		[ 9,-1,10,-1, 8 ],
+		[-1, 0, 2, 0,-1 ],
 		[ 0, 5, 1, 3, 0 ],
-		[ 6, 0, 4, 0, 7 ],
-		[-1,-1,-1,-1,-1 ]
+		[-1, 0, 4, 0,-1 ],
+		[ 6,-1,11,-1, 7 ]
 	],
 	"displayPattern":
 	[
@@ -19,11 +19,11 @@
 	],
 	"reagents":
 	[
-		"     ",
-		"L P L",
+		"L Y L",
+		"  P  ",
 		" OEO ",
-		"B G B",
-		"     "
+		"  G  ",
+		"B D B"
 	],
 	"keys":
 	{
@@ -61,6 +61,18 @@
 		{
 			"item": "minecraft:end_crystal",
 			"optional": false,
+			"consume": true
+		},
+		"Y":
+		{
+			"item": "minecraft:ender_eye",
+			"optional": true,
+			"consume": true
+		},
+		"D":
+		{
+			"item": "minecraft:diamond",
+			"optional": true,
 			"consume": true
 		}
 	},

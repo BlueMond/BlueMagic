@@ -7,6 +7,7 @@ import me.bluemond.bluemagic.init.EntityInit;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -23,11 +24,23 @@ public class RitualEffectEmpowerment extends RitualEffect {
 
     @Override
     protected boolean applyRitualEffect(PlayerEntity playerEntity, ServerWorld serverWorld, BlockPos ritualCenter, IRitualRecipe iRitualRecipe, NonNullList<ItemStack> reagents) {
+        boolean extendedRange = false;
+        boolean extendedTime = false;
+
+        for(ItemStack itemStack : reagents){
+            if(itemStack.getItem() == Items.ENDER_EYE){
+                extendedRange = true;
+            }else if(itemStack.getItem() == Items.DIAMOND){
+                extendedTime = true;
+            }
+        }
+
 
         EmpowermentEntity empowermentEntity = EntityInit.EMPOWERMENT_ENTITY.get()
                 .create(serverWorld, null, null, null, ritualCenter.up(),
                         SpawnReason.TRIGGERED, false, false);
         empowermentEntity.setPotionStack(reagents.get(1));
+        empowermentEntity.setExtendedRangeAndTime(extendedRange, extendedTime);
         serverWorld.addEntity(empowermentEntity);
 
         return false;

@@ -38,13 +38,10 @@ public class EmpowermentEntityRenderer extends EntityRenderer<EmpowermentEntity>
         this.empowermentModel.setLivingAnimations(entityIn, 0, 0, partialTicks);
         RenderType renderType = RenderType.getEntityTranslucent(this.getEntityTexture(entityIn));
 
-        if(entityIn.getPotionStack() != null){
+        if(!entityIn.getPotionStack().isEmpty()){
             matrixStackIn.push();
             matrixStackIn.translate(.015, 1.01, 0);
             matrixStackIn.scale(.5F, .5F, .5F);
-            // ForgeHooksClient.drawItemLayered(Minecraft.getInstance().getItemRenderer(), this.empowermentModel, entityIn.getPotionStack(), matrixStackIn, bufferIn, packedLightIn, OverlayTexture.NO_OVERLAY, true);
-            // ItemStackTileEntityRenderer.instance.func_239207_a_(entityIn.getPotionStack(), ItemCameraTransforms.TransformType.FIXED, matrixStackIn, bufferIn, packedLightIn, OverlayTexture.NO_OVERLAY);
-
             ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
 
             IBakedModel iBakedModel = itemRenderer.getItemModelWithOverrides(entityIn.getPotionStack(), entityIn.getEntityWorld(), null);
@@ -52,11 +49,10 @@ public class EmpowermentEntityRenderer extends EntityRenderer<EmpowermentEntity>
             matrixStackIn.pop();
         }
 
+
         IVertexBuilder iVertexBuilder = bufferIn.getBuffer(renderType);
         this.empowermentModel.render(matrixStackIn, iVertexBuilder, packedLightIn, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
         super.render(entityIn, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
-        // look into itemRenderer.zlevel or
-        // net.minecraftforge.client.ForgeHooksClient.setRenderLayer(rendertype);
     }
 
     @Override
