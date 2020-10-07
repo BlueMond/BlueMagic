@@ -92,8 +92,9 @@ public class EmpowermentEntity extends Entity implements IAnimatedEntity {
 
     @Override
     protected void readAdditional(CompoundNBT compound) {
-        this.dataManager.set(KEY_POTION, ItemStack.read(compound));
-        this.dataManager.set(KEY_MAX_AGE, compound.getFloat("max_age"));
+        CompoundNBT potionTag = (CompoundNBT) compound.get("potion");
+        this.dataManager.set(KEY_POTION, ItemStack.read(potionTag));
+        this.dataManager.set(KEY_MAX_AGE, compound.getFloat("maxAge"));
         this.dataManager.set(KEY_RADIUS, compound.getFloat("radius"));
         age = compound.getInt("age");
         effects = PotionUtils.getEffectsFromStack(this.dataManager.get(KEY_POTION));
@@ -101,8 +102,10 @@ public class EmpowermentEntity extends Entity implements IAnimatedEntity {
 
     @Override
     protected void writeAdditional(CompoundNBT compound) {
-        this.dataManager.get(KEY_POTION).write(compound);
-        compound.putFloat("max_age", this.dataManager.get(KEY_MAX_AGE));
+        CompoundNBT potionTag = new CompoundNBT();
+        this.dataManager.get(KEY_POTION).write(potionTag);
+        compound.put("potion", potionTag);
+        compound.putFloat("maxAge", this.dataManager.get(KEY_MAX_AGE));
         compound.putFloat("radius", this.dataManager.get(KEY_RADIUS));
         compound.putInt("age", age);
     }
